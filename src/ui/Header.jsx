@@ -7,12 +7,12 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="relative flex items-center justify-between bg-yellow-400 px-2 py-1 ">
-      <div>
-        <img src={UserImg} alt="User image" />
+      <div className="flex flex-col items-center justify-center text-center text-xs md:text-sm xl:text-lg">
+        <img src={UserImg} alt="User image" className="w-8" />
         <h3>UserName</h3>
       </div>
-      <img src={Logo} alt="Main Logo" className="w-40 " />
-      <div>
+      <img src={Logo} alt="Main Logo" className="w-24 md:w-32 lg:w-40 " />
+      <div className="w-16">
         {!isOpen ? (
           <img
             src={MenuIcon}
@@ -29,7 +29,7 @@ function Header() {
           />
         )}
         <ul
-          className={`absolute right-0 top-0 flex h-screen w-[0px] flex-col items-center justify-center gap-12   bg-yellow-500 transition-all duration-300  xl:top-[40%]  xl:w-auto xl:flex-row xl:items-start xl:justify-end xl:gap-12  xl:bg-transparent xl:px-2 xl:text-lg ${
+          className={`absolute right-0 top-0 flex h-screen w-[0px] flex-col items-center justify-center gap-16 bg-yellow-500  transition-all duration-300 xl:top-[40%] xl:w-auto xl:flex-row xl:items-start xl:justify-end  xl:gap-8 xl:bg-transparent xl:px-2 xl:text-lg ${
             isOpen ? 'w-1/2 ' : ''
           } `}
         >

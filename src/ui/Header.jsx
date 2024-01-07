@@ -3,13 +3,16 @@ import UserImg from '../assets/user.png';
 import MenuIcon from '../assets/MenuIcon.png';
 import CrossIcon from '../assets/CrossIcon.png';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="relative flex items-center justify-between bg-yellow-400 px-2 py-1 ">
       <div className="flex flex-col items-center justify-center text-center text-xs md:text-sm xl:text-lg">
         <img src={UserImg} alt="User image" className="w-8" />
-        <h3>UserName</h3>
+        <Link to="/registration">
+          <h3>UserName</h3>
+        </Link>
       </div>
       <img src={Logo} alt="Main Logo" className="w-24 md:w-32 lg:w-40 " />
       <div className="w-16">
@@ -33,19 +36,33 @@ function Header() {
             isOpen ? 'w-1/2 ' : ''
           } `}
         >
-          <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>Home</li>
-          <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
-            Accounts
-          </li>
-          <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
-            About us
-          </li>
-          <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
-            Products
-          </li>
-          <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
-            Contact us
-          </li>
+          <Link to="/">
+            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+              Home
+            </li>{' '}
+          </Link>
+
+          <Link to="/app">
+            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+              Accounts
+            </li>
+          </Link>
+          <Link to="/products">
+            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+              Products
+            </li>
+          </Link>
+          <Link to="/about">
+            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+              About us
+            </li>
+          </Link>
+
+          <Link to="/about">
+            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+              Contact us
+            </li>
+          </Link>
         </ul>
       </div>
     </header>

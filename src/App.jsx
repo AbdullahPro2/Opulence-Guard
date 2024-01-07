@@ -1,29 +1,34 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import AppLayout from "./ui/AppLayout";
-import Home from "./ui/Home";
-import Registration from "./features/User/Registration";
-import About from "./ui/About";
-import Transaction from "./features/Transaction/Transaction";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import AppLayout from './ui/AppLayout';
+import Home from './ui/Home';
+import Registration from './features/User/Registration';
+import About from './ui/About';
+import Transaction from './features/Transaction/Transaction';
+import Products from './ui/Products';
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/app",
+        path: '/app',
         element: <Transaction />,
       },
       {
-        path: "/registration",
+        path: '/registration',
         element: <Registration />,
       },
       {
-        path: "/about",
+        path: '/about',
         element: <About />,
+      },
+      {
+        path: '/products',
+        element: <Products />,
       },
     ],
   },

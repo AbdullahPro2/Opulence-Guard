@@ -2,10 +2,31 @@ import Logo from '../assets/Logo.svg';
 import UserImg from '../assets/user.png';
 import MenuIcon from '../assets/MenuIcon.png';
 import CrossIcon from '../assets/CrossIcon.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const shouldShowNavbar =
+        currentScrollPos < prevScrollPos || currentScrollPos < 100;
+
+      if (isOpen && !shouldShowNavbar) {
+        setIsOpen(false);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpen, prevScrollPos]);
   return (
     <header className="relative flex items-center justify-between bg-yellow-400 px-2 py-1 ">
       <div className="flex flex-col items-center justify-center text-center text-xs md:text-sm xl:text-lg">
@@ -33,7 +54,7 @@ function Header() {
         )}
         <ul
           className={`absolute right-0 top-0 flex h-screen w-[0px] flex-col items-center justify-center gap-16 bg-yellow-500  transition-all duration-300 xl:top-[40%] xl:w-auto xl:flex-row xl:items-start xl:justify-end  xl:gap-8 xl:bg-transparent xl:px-2 xl:text-lg ${
-            isOpen ? 'w-1/2 ' : ''
+            isOpen ? 'w-[50%] ' : ''
           } `}
         >
           <Link to="/">

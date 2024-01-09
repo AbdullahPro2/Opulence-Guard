@@ -9,33 +9,32 @@ function Header() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
+    function handleScroll() {
+      const currentScrollPosition = window.scrollY;
       const shouldShowNavbar =
-        currentScrollPos < prevScrollPos || currentScrollPos < 100;
-
-      if (isOpen && !shouldShowNavbar) {
+        currentScrollPosition < prevScrollPos || currentScrollPosition < 100;
+      if (!shouldShowNavbar && isOpen) {
         setIsOpen(false);
       }
-
-      setPrevScrollPos(currentScrollPos);
-    };
-
+      setPrevScrollPos(currentScrollPosition);
+    }
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen, prevScrollPos]);
+
   return (
-    <header className="relative flex items-center justify-between bg-yellow-400 px-2 py-1 ">
-      <div className="flex flex-col items-center justify-center text-center text-xs md:text-sm xl:text-lg">
-        <img src={UserImg} alt="User image" className="w-8" />
+    <header className="relative flex items-center justify-between bg-yellow-400 px-2 py-1 text-sm md:text-base xl:text-lg">
+      <div className=" mt-3 text-center">
+        <img
+          src={UserImg}
+          alt="User image"
+          className="mx-auto mb-2 w-8 md:w-12 xl:w-16"
+        />
         <Link to="/registration">
           <h3>UserName</h3>
         </Link>
       </div>
-      <img src={Logo} alt="Main Logo" className="w-24 md:w-32 lg:w-40 " />
+      <img src={Logo} alt="Main Logo" className="w-28 md:w-32 lg:w-40 " />
       <div className="w-16">
         {!isOpen ? (
           <img
@@ -58,29 +57,49 @@ function Header() {
           } `}
         >
           <Link to="/">
-            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+            <li
+              className={`w-80 justify-center  xl:inline   ${
+                isOpen ? 'flex' : 'hidden'
+              }`}
+            >
               Home
             </li>{' '}
           </Link>
 
           <Link to="/app">
-            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+            <li
+              className={`w-80 justify-center   xl:inline  ${
+                isOpen ? 'flex' : 'hidden'
+              }`}
+            >
               Accounts
             </li>
           </Link>
           <Link to="/products">
-            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+            <li
+              className={`w-80 justify-center   xl:inline  ${
+                isOpen ? 'flex' : 'hidden'
+              }`}
+            >
               Products
             </li>
           </Link>
           <Link to="/about">
-            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+            <li
+              className={`w-80 justify-center  xl:inline   ${
+                isOpen ? 'flex' : 'hidden'
+              }`}
+            >
               About us
             </li>
           </Link>
 
           <Link to="/about">
-            <li className={`xl:inline ${isOpen ? 'inline' : 'hidden'}`}>
+            <li
+              className={` w-80 justify-center  xl:inline  ${
+                isOpen ? 'flex' : 'hidden'
+              }`}
+            >
               Contact us
             </li>
           </Link>

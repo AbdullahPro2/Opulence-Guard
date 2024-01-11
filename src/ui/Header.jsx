@@ -23,7 +23,7 @@ function Header() {
   }, [isOpen, prevScrollPos]);
 
   return (
-    <header className="relative flex items-center justify-between bg-yellow-400 px-2 py-1 text-sm md:text-base xl:text-lg">
+    <header className="relative z-50 flex items-center justify-between bg-yellow-400 px-2 py-1 text-sm md:text-base xl:text-lg">
       <div className=" mt-3 text-center">
         <img
           src={UserImg}

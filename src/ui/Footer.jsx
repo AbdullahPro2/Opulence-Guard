@@ -9,7 +9,7 @@ import Linkdin from '../assets/linkedin.svg';
 function Footer() {
   return (
     <footer
-      className="flex flex-col items-center justify-center border bg-yellow-400 p-8 text-sm md:grid md:grid-cols-3 md:grid-rows-[1fr_auto_auto] md:text-base xl:text-lg
+      className="flex flex-col items-center justify-center  bg-yellow-400 p-8 text-sm md:grid md:grid-cols-3 md:grid-rows-[1fr_auto_auto] md:text-base xl:text-lg
     "
     >
       <div className="mb-4 flex flex-col   md:mb-0 md:h-full md:p-5 ">

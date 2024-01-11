@@ -9,8 +9,8 @@ function AppLayout() {
       <div className="h-screen">
         <Header />
         <Outlet />
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

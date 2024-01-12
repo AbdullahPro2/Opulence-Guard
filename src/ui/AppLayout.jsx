@@ -5,13 +5,13 @@ import Footer from './Footer';
 
 function AppLayout() {
   return (
-    <>
-      <div className="h-screen">
+    <div className="">
+      <div className="min-h-screen">
         <Header />
         <Outlet />
-        <Footer />
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

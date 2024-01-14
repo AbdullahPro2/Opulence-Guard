@@ -52,7 +52,7 @@ function Header() {
           />
         )}
         <ul
-          className={`absolute right-0 top-0 flex h-screen w-[0px] flex-col items-center justify-center gap-16 bg-yellow-500  transition-all duration-300 xl:top-[40%] xl:w-auto xl:flex-row xl:items-start xl:justify-end  xl:gap-8 xl:bg-transparent xl:px-2 xl:text-lg ${
+          className={`absolute right-0 top-0 flex h-screen w-[0px] flex-col items-center justify-center gap-16 bg-yellow-500  transition-all duration-300 xl:top-[40%] xl:h-auto xl:w-auto xl:flex-row xl:items-start xl:justify-end  xl:gap-8 xl:bg-transparent xl:px-2 xl:text-lg ${
             isOpen ? 'w-[50%] ' : ''
           } `}
         >

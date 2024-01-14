@@ -119,7 +119,7 @@ function Carousel() {
             image={cards}
             text_1=" Exceptional Customer Service, Always"
             text_2="Our team is dedicated to providing you with the best customer service experience. Your satisfaction is our priority."
-            btn_1="Learn More"
+            btn_1="Connect with us"
             btn_2="Contact Us"
           />
         </div>

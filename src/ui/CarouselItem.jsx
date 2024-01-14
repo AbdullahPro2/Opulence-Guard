@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function CarouselItem({ image, text_1, text_2, btn_1, btn_2 }) {
   return (
@@ -13,10 +14,14 @@ function CarouselItem({ image, text_1, text_2, btn_1, btn_2 }) {
         </div>
 
         <div className="absolute mt-5 flex gap-2 text-[10px] xs:text-sm sm:text-base  lg:text-lg">
-          <button className=" rounded-md bg-yellow-400 p-1">{btn_1}</button>
-          <button className="rounded-md  border bg-transparent p-1 text-white ">
-            {btn_2}
-          </button>
+          <Link to="/registration">
+            <button className=" rounded-md bg-yellow-400 p-1">{btn_1}</button>
+          </Link>
+          <Link to="/about">
+            <button className="rounded-md  border bg-transparent p-1 text-white ">
+              {btn_2}
+            </button>
+          </Link>
         </div>
       </div>
       <img

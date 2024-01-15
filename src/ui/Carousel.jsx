@@ -76,7 +76,11 @@ function Carousel() {
   }, [carousel, finalDrag, carouselCount.length]);
 
   return (
-    <div className="relative cursor-grab overflow-hidden">
+    <div
+      className={`relative  overflow-hidden ${
+        isDragging ? 'cursor-grabbing' : 'cursor-grab'
+      }`}
+    >
       <div
         ref={carouselDiv}
         className={`duration-600 flex select-none bg-slate-500 transition-all ease-in `}

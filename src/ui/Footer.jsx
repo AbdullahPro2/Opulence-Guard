@@ -11,17 +11,19 @@ function Footer() {
     <footer
       className="flex flex-col items-center justify-center  bg-yellow-400 p-8 text-sm md:grid md:grid-cols-3 md:grid-rows-[1fr_auto_auto] md:text-base xl:text-lg
     "
+      data-aos="fade-up"
+      data-aos-duration="1000"
     >
       <div className="mb-4 flex flex-col   md:mb-0 md:h-full md:p-5 ">
-        <img src={Logo} alt="Logo Image" className="w-52" />
+        <img src={Logo} alt="Logo" className="w-40 lg:w-64" />
       </div>
-      <div className="mb-4 flex w-full list-none items-center justify-center gap-8    md:mb-0 md:h-full md:w-full md:flex-col md:p-5">
+      <div className=" mb-4 flex w-full list-none items-center justify-center gap-2 text-sm md:mb-0    md:h-full md:w-full md:flex-col md:gap-8 md:p-5">
         <li className="cursor-pointer">About</li>
         <li className="cursor-pointer">Contact</li>
         <li className="cursor-pointer">Products</li>
         <li className="cursor-pointer">Transactions</li>
       </div>
-      <ul className="mb-4 flex  w-max gap-8  md:mb-0 md:h-full md:w-full md:flex-col md:items-center md:p-5 md:text-center">
+      <ul className="mb-4 flex w-max gap-2 text-sm md:mb-0 md:h-full md:w-full md:flex-col md:items-center md:gap-8 md:p-5 md:text-center">
         <li className=" cursor-pointer md:w-max">Design</li>
         <li className=" cursor-pointer md:w-max">Support</li>
         <li className=" cursor-pointer md:w-max">Bussiness</li>
@@ -32,35 +34,35 @@ function Footer() {
         <img
           src={Home}
           alt="Social Links images"
-          className="w-9 cursor-pointer"
+          className="w-5 cursor-pointer md:w-9"
         />
         <img
           src={Github}
           alt="Social Links images"
-          className="w-9 cursor-pointer"
+          className="w-5 cursor-pointer md:w-9"
         />
         <img
           src={Linkdin}
           alt="Social Links images"
-          className="w-9 cursor-pointer"
+          className="w-5 cursor-pointer md:w-9"
         />
         <img
           src={Discord}
           alt="Social Links images"
-          className="w-9 cursor-pointer"
+          className="w-5 cursor-pointer md:w-9"
         />
         <img
           src={Instagram}
           alt="Social Links images"
-          className="w-9 cursor-pointer"
+          className="w-5 cursor-pointer md:w-9"
         />
         <img
           src={Facebook}
           alt="Social Links images"
-          className="w-9 cursor-pointer"
+          className="w-5 cursor-pointer md:w-9"
         />
       </div>
-      <p className=" row-start-3 mb-4 w-max   md:mb-0 md:p-5 ">
+      <p className="row-start-3 mb-4 text-center text-xs md:mb-0   md:w-max md:p-5 md:text-base">
         Oplence Guard LLC <span className="bold text-lg ">&copy;</span> All copy
         right reserved 2024
       </p>

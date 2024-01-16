@@ -5,7 +5,7 @@ import CarouselItem from './CarouselItem';
 import CardBlack from '../assets/cardBlack.png';
 import growth from '../assets/growth.png';
 import savings from '../assets/savings.png';
-import cards from '../assets/cards.svg';
+import cards from '../assets/Service.png';
 
 function Carousel() {
   const [carousel, setCarousel] = useState(0);
@@ -14,7 +14,6 @@ function Carousel() {
   const [isDragging, setInDragging] = useState(false);
   const [initialDrag, setInitialDrag] = useState(0);
   const [finalDrag, setFinalDrag] = useState(0);
-
   function handleNext() {
     if (carousel < carouselCount.length - 1) {
       setCarousel((prev) => prev + 1);
@@ -98,6 +97,11 @@ function Carousel() {
             text_2="Seamless banking experiences tailored just for you"
             btn_1="Get Started Now"
             btn_2="Explore More"
+            bg1="from-[#fbd07c]"
+            bg2="to-[#ff930f]"
+            textcolor="text-black"
+            bgBtn="bg-[#333]"
+            btnText="text-yellow-200"
           />
         </div>
         <div className="min-w-full">
@@ -107,6 +111,11 @@ function Carousel() {
             text_2="Secure, Seamless, and Simple Banking for the Modern World Join Us Today and Elevate Your Banking Experience"
             btn_1="Get Started Now"
             btn_2="Explore More"
+            bg1="from-[#fbd07c]"
+            bg2="to-[#e89d1f]"
+            textcolor="text-black"
+            bgBtn="bg-[#333]"
+            btnText="text-yellow-200"
           />
         </div>
         <div className="min-w-full">
@@ -116,6 +125,11 @@ function Carousel() {
             text_2="Saving money has never been this easy and rewarding.Secure your future with our seamless and modern banking solutions."
             btn_1="Start Saving Now"
             btn_2="Explore More"
+            bg1="from-[#e4e95d]"
+            bg2="to-[#e89d1f]"
+            textcolor="text-black"
+            bgBtn="bg-[#333]"
+            btnText="text-yellow-200"
           />
         </div>
         <div className="min-w-full">
@@ -125,6 +139,11 @@ function Carousel() {
             text_2="Our team is dedicated to providing you with the best customer service experience. Your satisfaction is our priority."
             btn_1="Connect with us"
             btn_2="Contact Us"
+            bg1="from-[#ffd78a]"
+            bg2="to-[#f4762d]"
+            textcolor="text-black"
+            bgBtn="bg-[#333]"
+            btnText="text-yellow-200"
           />
         </div>
       </div>

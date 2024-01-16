@@ -11,19 +11,17 @@ function Footer() {
     <footer
       className="flex flex-col items-center justify-center  bg-yellow-400 p-8 text-sm md:grid md:grid-cols-3 md:grid-rows-[1fr_auto_auto] md:text-base xl:text-lg
     "
-      data-aos="fade-up"
-      data-aos-duration="1000"
     >
       <div className="mb-4 flex flex-col   md:mb-0 md:h-full md:p-5 ">
         <img src={Logo} alt="Logo" className="w-40 lg:w-64" />
       </div>
-      <div className=" mb-4 flex w-full list-none items-center justify-center gap-2 text-sm md:mb-0    md:h-full md:w-full md:flex-col md:gap-8 md:p-5 md:text-base lg:text-lg ">
+      <div className=" mb-4 flex w-full list-none items-center justify-center gap-2 text-xs md:mb-0    md:h-full md:w-full md:flex-col md:gap-8 md:p-5 md:text-base lg:text-lg ">
         <li className="cursor-pointer">About</li>
         <li className="cursor-pointer">Contact</li>
         <li className="cursor-pointer">Products</li>
         <li className="cursor-pointer">Transactions</li>
       </div>
-      <ul className="mb-4 flex w-max gap-2 text-sm md:mb-0 md:h-full md:w-full md:flex-col md:items-center md:gap-8 md:p-5 md:text-center md:text-base lg:text-lg ">
+      <ul className="mb-4 flex w-max gap-2 text-xs md:mb-0 md:h-full md:w-full md:flex-col md:items-center md:gap-8 md:p-5 md:text-center md:text-base lg:text-lg ">
         <li className=" cursor-pointer md:w-max">Design</li>
         <li className=" cursor-pointer md:w-max">Support</li>
         <li className=" cursor-pointer md:w-max">Bussiness</li>

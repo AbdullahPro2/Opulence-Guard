@@ -5,7 +5,7 @@ import Guidance from './Guidance';
 
 function Home() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Carousel />
       <div className="mx-auto my-8 w-24 rounded-md border-[3px] border-yellow-500"></div>
       <ZPattern />

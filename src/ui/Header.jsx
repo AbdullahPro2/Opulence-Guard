@@ -61,6 +61,7 @@ function Header() {
               className={`w-80 justify-center  xl:inline   ${
                 isOpen ? 'flex' : 'hidden'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Home
             </li>{' '}
@@ -71,6 +72,7 @@ function Header() {
               className={`w-80 justify-center   xl:inline  ${
                 isOpen ? 'flex' : 'hidden'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Accounts
             </li>
@@ -80,6 +82,7 @@ function Header() {
               className={`w-80 justify-center   xl:inline  ${
                 isOpen ? 'flex' : 'hidden'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Products
             </li>
@@ -89,6 +92,7 @@ function Header() {
               className={`w-80 justify-center  xl:inline   ${
                 isOpen ? 'flex' : 'hidden'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               About us
             </li>
@@ -99,6 +103,7 @@ function Header() {
               className={` w-80 justify-center  xl:inline  ${
                 isOpen ? 'flex' : 'hidden'
               }`}
+              onClick={() => setIsOpen(false)}
             >
               Contact us
             </li>

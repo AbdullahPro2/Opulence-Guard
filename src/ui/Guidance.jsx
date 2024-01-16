@@ -6,14 +6,14 @@ import purchases from '../assets/smartPurchases.png';
 
 function Guidance() {
   return (
-    <div className="mb-10 mt-16 ">
+    <div className="my-16 ">
       <h1
         className="px-5 text-center text-lg font-semibold md:flex-row lg:px-12 lg:text-3xl xl:font-bold
       "
       >
         Financial guidance and support
       </h1>
-      <div className="flex flex-col items-center justify-center text-center">
+      <div className=" flex flex-col px-5 md:flex-row md:gap-3 lg:px-12">
         <GuidanceItem
           image={retire}
           heading="Save. Invest. Retire well."
@@ -30,7 +30,7 @@ function Guidance() {
           image={purchases}
           heading="Dream big. Make it happen. Live it up."
           para="Discover how smart saving habits could help make your dream purchases a reality"
-          btnText="Get tips for big purchases"
+          btnText="Tips for big purchases"
         />
       </div>
     </div>

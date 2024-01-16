@@ -6,7 +6,7 @@ import Footer from './Footer';
 function AppLayout() {
   return (
     <div className="">
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-slate-50">
         <Header />
         <Outlet />
       </div>

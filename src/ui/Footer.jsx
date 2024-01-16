@@ -17,13 +17,13 @@ function Footer() {
       <div className="mb-4 flex flex-col   md:mb-0 md:h-full md:p-5 ">
         <img src={Logo} alt="Logo" className="w-40 lg:w-64" />
       </div>
-      <div className=" mb-4 flex w-full list-none items-center justify-center gap-2 text-sm md:mb-0    md:h-full md:w-full md:flex-col md:gap-8 md:p-5">
+      <div className=" mb-4 flex w-full list-none items-center justify-center gap-2 text-sm md:mb-0    md:h-full md:w-full md:flex-col md:gap-8 md:p-5 md:text-base lg:text-lg ">
         <li className="cursor-pointer">About</li>
         <li className="cursor-pointer">Contact</li>
         <li className="cursor-pointer">Products</li>
         <li className="cursor-pointer">Transactions</li>
       </div>
-      <ul className="mb-4 flex w-max gap-2 text-sm md:mb-0 md:h-full md:w-full md:flex-col md:items-center md:gap-8 md:p-5 md:text-center">
+      <ul className="mb-4 flex w-max gap-2 text-sm md:mb-0 md:h-full md:w-full md:flex-col md:items-center md:gap-8 md:p-5 md:text-center md:text-base lg:text-lg ">
         <li className=" cursor-pointer md:w-max">Design</li>
         <li className=" cursor-pointer md:w-max">Support</li>
         <li className=" cursor-pointer md:w-max">Bussiness</li>
@@ -62,11 +62,11 @@ function Footer() {
           className="w-5 cursor-pointer md:w-9"
         />
       </div>
-      <p className="row-start-3 mb-4 text-center text-xs md:mb-0   md:w-max md:p-5 md:text-base">
+      <p className="row-start-3 mb-4 text-center text-xs md:mb-0   md:w-max md:p-5 md:text-base lg:text-lg ">
         Oplence Guard LLC <span className="bold text-lg ">&copy;</span> All copy
         right reserved 2024
       </p>
-      <p className="col-span-2  row-start-3 mb-4  font-bold md:mb-0 md:p-5 md:text-right ">
+      <p className="col-span-2  row-start-3 mb-4  font-bold md:mb-0 md:p-5 md:text-right md:text-base lg:text-lg  ">
         Made By Abdullah
       </p>
     </footer>

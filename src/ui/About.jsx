@@ -2,7 +2,7 @@ import React from 'react';
 
 function About() {
   return (
-    <div className="lg:px-15 lg:mx-15  mx-5 mt-5 bg-slate-100 px-5 xl:mx-20 xl:px-20">
+    <div className="lg:px-15 lg:mx-15  mx-5 mt-5  px-5 xl:mx-20 xl:px-20">
       <div className="my-10 ">
         <h1 className="mb-5 text-center text-2xl font-bold lg:text-3xl">
           About us

@@ -12,8 +12,8 @@ function AppLayout() {
       : 'Home'
   }`;
   return (
-    <div className="">
-      <div className="min-h-screen bg-slate-50">
+    <div className="bg-yellow-50">
+      <div className="min-h-screen">
         <Header />
         <Outlet />
       </div>

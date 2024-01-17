@@ -98,7 +98,7 @@ function Header() {
             </li>
           </Link>
 
-          <Link to="/about">
+          <Link to="/contact">
             <li
               className={` w-80 justify-center  xl:inline  ${
                 isOpen ? 'flex' : 'hidden'

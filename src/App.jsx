@@ -5,6 +5,7 @@ import Registration from './features/User/Registration';
 import About from './ui/About';
 import Transaction from './features/Transaction/Transaction';
 import Products from './ui/Products';
+import Contact from './ui/Contact';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <Products />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />,
       },
     ],
   },

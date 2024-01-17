@@ -6,6 +6,7 @@ import Discord from '../assets/discord.svg';
 import Home from '../assets/home.svg';
 import Instagram from '../assets/Instagram_1_.svg';
 import Linkdin from '../assets/linkedin.svg';
+import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <footer
@@ -16,10 +17,18 @@ function Footer() {
         <img src={Logo} alt="Logo" className="w-40 lg:w-64" />
       </div>
       <div className=" mb-4 flex w-full list-none items-center justify-center gap-2 text-xs md:mb-0    md:h-full md:w-full md:flex-col md:gap-8 md:p-5 md:text-base lg:text-lg ">
-        <li className="cursor-pointer">About</li>
-        <li className="cursor-pointer">Contact</li>
-        <li className="cursor-pointer">Products</li>
-        <li className="cursor-pointer">Transactions</li>
+        <Link to="/about">
+          <li className="cursor-pointer">About</li>
+        </Link>
+        <Link to="/contact">
+          <li className="cursor-pointer">Contact</li>
+        </Link>
+        <Link to="/products">
+          <li className="cursor-pointer">Products</li>
+        </Link>
+        <Link to="/app">
+          <li className="cursor-pointer">Transactions</li>
+        </Link>
       </div>
       <ul className="mb-4 flex w-max gap-2 text-xs md:mb-0 md:h-full md:w-full md:flex-col md:items-center md:gap-8 md:p-5 md:text-center md:text-base lg:text-lg ">
         <li className=" cursor-pointer md:w-max">Design</li>
@@ -29,21 +38,37 @@ function Footer() {
       </ul>
 
       <div className="col-span-3 mb-4 flex items-center justify-center  gap-8    md:mb-0 md:gap-20 md:p-5 ">
-        <img
-          src={Home}
-          alt="Social Links images"
-          className="w-5 cursor-pointer md:w-9"
-        />
-        <img
-          src={Github}
-          alt="Social Links images"
-          className="w-5 cursor-pointer md:w-9"
-        />
-        <img
-          src={Linkdin}
-          alt="Social Links images"
-          className="w-5 cursor-pointer md:w-9"
-        />
+        <Link to="/">
+          <img
+            src={Home}
+            alt="Social Links images"
+            className="w-5 cursor-pointer md:w-9"
+          />
+        </Link>
+        <a
+          href="https://github.com/AbdullahPro2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            href="https://github.com/AbdullahPro2"
+            target="_blank"
+            src={Github}
+            alt="Social Links images"
+            className="w-5 cursor-pointer md:w-9"
+          />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/abdulllahnezami"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={Linkdin}
+            alt="Social Links images"
+            className="w-5 cursor-pointer md:w-9"
+          />
+        </a>
         <img
           src={Discord}
           alt="Social Links images"

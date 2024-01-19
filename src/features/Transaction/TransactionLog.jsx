@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 function TransactionLog() {
-  return <div>TransactionLog</div>;
+  return <div></div>;
 }
 
 export default TransactionLog;

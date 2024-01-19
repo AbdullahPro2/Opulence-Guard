@@ -17,7 +17,9 @@ const TransactionForm = () => {
   const [payLoanAmount, setPayLoan] = useState('');
   const [withdrawAmount, setWithdrawAmount] = useState('');
   const [transferAmount, setTransferAmount] = useState('');
-
+  const dispatch = useDispatch();
+  const { balance, loan } = useSelector((state) => state.account);
+  const { fullName, accountNumber } = useSelector((state) => state.user);
   const formDiv = useRef();
   useEffect(() => {
     if (btnOpen !== '') {
@@ -25,8 +27,6 @@ const TransactionForm = () => {
     }
   }, [btnOpen]);
 
-  const dispatch = useDispatch();
-  const { balance, loan } = useSelector((state) => state.account);
   function handleDeposit() {
     dispatch(deposite(depositAmount));
   }
@@ -46,7 +46,7 @@ const TransactionForm = () => {
     <div className="container mx-auto mb-6 mt-8">
       <div className="mx-2 flex flex-col rounded-lg bg-gray-200 p-8 shadow-md md:flex-row md:justify-between ">
         <h1 className="mb-2 text-xl font-bold md:text-2xl lg:text-4xl">
-          Welcome, %NAME%
+          Welcome, {fullName}
         </h1>
         <div>
           <p className="text-lg md:text-xl lg:text-2xl">
@@ -54,7 +54,7 @@ const TransactionForm = () => {
             {balance}
           </p>
           <p className="text-lg md:text-xl lg:text-2xl">
-            <strong>Account Number:</strong> %ACCOUNT-NUMBER%
+            <strong>Account Number:</strong> {accountNumber}
           </p>
           {loan > 0 && (
             <p className="text-lg md:text-xl lg:text-2xl">

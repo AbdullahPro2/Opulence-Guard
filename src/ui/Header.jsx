@@ -4,6 +4,7 @@ import MenuIcon from '../assets/MenuIcon.png';
 import CrossIcon from '../assets/CrossIcon.png';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -21,7 +22,7 @@ function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen, prevScrollPos]);
-
+  const { fullName } = useSelector((state) => state.user);
   return (
     <header className="relative z-40 flex items-center justify-between bg-yellow-400 px-2 py-1 text-sm md:text-base xl:text-lg">
       <div className=" mt-3 text-center">
@@ -30,11 +31,11 @@ function Header() {
           <img
             src={UserImg}
             alt="User"
-            className="mx-auto mb-2 w-8 md:w-12 xl:w-16"
+            className={`mx-auto mb-2 w-8 md:w-12 xl:w-16`}
           />
         </Link>
 
-        <h3>UserName</h3>
+        <h3>{fullName}</h3>
       </div>
       <img src={Logo} alt="Main Logo" className="w-28 md:w-32 lg:w-40 " />
       <div className="w-16">
@@ -54,7 +55,7 @@ function Header() {
           />
         )}
         <ul
-          className={`absolute right-0 top-0 flex h-screen w-[0px] flex-col items-center justify-center gap-16 bg-yellow-500  transition-all duration-300 xl:top-[40%] xl:h-auto xl:w-auto xl:flex-row xl:items-start xl:justify-end  xl:gap-8 xl:bg-transparent xl:px-2 xl:text-lg ${
+          className={`absolute right-0 top-0 flex h-screen w-[0px] flex-col items-center justify-center gap-16 bg-yellow-300  transition-all duration-300 xl:top-[40%] xl:h-auto xl:w-auto xl:flex-row xl:items-start xl:justify-end  xl:gap-8 xl:bg-transparent xl:px-2 xl:text-lg ${
             isOpen ? 'w-[50%] ' : ''
           } `}
         >

@@ -1,24 +1,63 @@
 import React, { useState } from 'react';
-import { createUser } from './UserSlice';
 import { useDispatch } from 'react-redux';
-import { auth } from '../../firbaseConfig';
+import { auth, db } from '../../firbaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { addDoc, collection } from 'firebase/firestore';
 
-function SignUp() {
+function SignUp({ setFirstTime }) {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
+  //   function generateBankAccountNumber(existingAccountNumbers) {
+  //     // Set the maximum and minimum values for the 6-digit account number
+  //     const minAccountNumber = 100000;
+  //     const maxAccountNumber = 999999;
+  //     let newAccountNumber;
+  //     // Generate a unique 6-digit random number
+  //     do {
+  //       newAccountNumber = Math.floor(
+  //         Math.random() * (maxAccountNumber - minAccountNumber + 1) +
+  //           minAccountNumber,
+  //       );
+  //     } while (existingAccountNumbers.includes(newAccountNumber));
+  //     // Add the new account number to the existing list
+  //     existingAccountNumbers.push(newAccountNumber);
+
+  //     return newAccountNumber;
+  //   }
   async function handleSubmit(e) {
     e.preventDefault();
     if (password === confirmPassword && userName) {
-      //   dispatch(createUser(userName, password));
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      if (res.user.email) {
-        navigate('/registration');
+      try {
+        if (res.user.uid) {
+          const docRef = await addDoc(collection(db, 'appUsers'), {
+            UserUID: res.user.uid,
+            AccountNumber: Math.floor(
+              Math.random() * (99999 - 10000 + 1) + 10000,
+            ),
+            Balance: 0,
+            FullName: userName,
+            Loan: 0,
+            LoanPurpose: '',
+            Password: password,
+          });
+          if (res.user.uid) {
+            console.log('yes working');
+            setConfirmPassword('');
+            setEmail('');
+            setPassword('');
+            setUserName('');
+            setFirstTime(false);
+            navigate('/registration');
+          }
+        }
+      } catch (e) {
+        console.error('Error adding document: ', e);
       }
     }
   }

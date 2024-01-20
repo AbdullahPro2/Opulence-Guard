@@ -8,10 +8,20 @@ import {
   transferToAnotherAccount,
   withdraw,
 } from './TransactionSlice';
+import {
+  collection,
+  doc,
+  getDocs,
+  onSnapshot,
+  query,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
+import { db } from '../../firbaseConfig';
 
 const TransactionForm = () => {
   const [btnOpen, setBtnOpen] = useState('');
-  const [depositAmount, setDepositAmount] = useState(0);
+  const [depositAmount, setDepositAmount] = useState('');
   const [loanAmount, setLoanAmount] = useState('');
   const [loanReason, setLoanReason] = useState('');
   const [payLoanAmount, setPayLoan] = useState('');
@@ -19,29 +29,131 @@ const TransactionForm = () => {
   const [transferAmount, setTransferAmount] = useState('');
   const dispatch = useDispatch();
   const { balance, loan } = useSelector((state) => state.account);
-  const { fullName, accountNumber } = useSelector((state) => state.user);
+  const { fullName, uid, accountNumber } = useSelector((state) => state.user);
   const formDiv = useRef();
-  useEffect(() => {
-    if (btnOpen !== '') {
-      formDiv.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [btnOpen]);
 
-  function handleDeposit() {
-    dispatch(deposite(depositAmount));
+  async function getDocRef() {
+    if (uid) {
+      try {
+        const itemsRef = collection(db, 'appUsers');
+        const queryItems = query(itemsRef, where('UserUID', '==', uid));
+        const querySnapshot = await getDocs(queryItems);
+        if (!querySnapshot.empty) {
+          const documentRef = doc(db, 'appUsers', querySnapshot.docs[0].id);
+          return documentRef;
+        } else {
+          console.log('No matching documents found for DocRef');
+          return null;
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
-  function handleWithdraw() {
-    dispatch(withdraw(withdrawAmount));
+  async function getDataByUID(uid) {
+    const itemsRef = collection(db, 'appUsers');
+
+    if (uid) {
+      try {
+        const queryItems = query(itemsRef, where('UserUID', '==', uid));
+        const querySnapshot = await getDocs(queryItems);
+
+        if (!querySnapshot.empty) {
+          const data = querySnapshot.docs[0].data();
+          return data;
+        } else {
+          console.log('No matching documents found');
+          return null;
+        }
+      } catch (e) {
+        console.error('Error fetching data:', e);
+        throw e;
+      }
+    } else {
+      console.warn('UID not available');
+      return null;
+    }
   }
-  function handleLoan() {
-    dispatch(requestLoan(loanAmount, loanReason));
+
+  async function handleDeposit() {
+    const referenceUser = await getDocRef();
+    if (referenceUser) {
+      try {
+        await updateDoc(referenceUser, {
+          Balance: balance + depositAmount,
+        });
+
+        const userData = await getDataByUID(uid);
+
+        dispatch(deposite(userData.Balance));
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
+
+  async function handleWithdraw() {
+    const referenceUser = await getDocRef();
+    if (balance >= withdrawAmount) {
+      if (referenceUser) {
+        try {
+          await updateDoc(referenceUser, {
+            Balance: balance - withdrawAmount,
+          });
+
+          const userData = await getDataByUID(uid);
+
+          dispatch(withdraw(userData.Balance));
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }
+  }
+  async function handleLoan() {
+    const referenceUser = await getDocRef();
+    if (loan > 0) return;
+    if (referenceUser) {
+      try {
+        await updateDoc(referenceUser, {
+          Balance: balance + loanAmount,
+          Loan: loanAmount,
+          LoanPurpose: loanReason,
+        });
+
+        const userData = await getDataByUID(uid);
+
+        dispatch(
+          requestLoan(userData.Loan, userData.LoanPurpose, userData.Balance),
+        );
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+  async function handlePayLoan() {
+    const referenceUser = await getDocRef();
+    if (referenceUser && balance >= payLoanAmount && payLoanAmount <= loan) {
+      try {
+        await updateDoc(referenceUser, {
+          Balance: balance - payLoanAmount,
+          Loan: loan - payLoanAmount,
+          LoanPurpose: '',
+        });
+
+        const userData = await getDataByUID(uid);
+
+        dispatch(payLoan(userData.Loan));
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
   function handleTransfer() {
     dispatch(transferToAnotherAccount(transferAmount));
   }
-  function handlePayLoan() {
-    dispatch(payLoan(payLoanAmount));
-  }
+
   return (
     <div className="container mx-auto mb-6 mt-8">
       <div className="mx-2 flex flex-col rounded-lg bg-gray-200 p-8 shadow-md md:flex-row md:justify-between ">

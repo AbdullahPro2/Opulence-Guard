@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -11,6 +11,7 @@ function AppLayout() {
         location.pathname.split('/')[1].slice(1)
       : 'Home'
   }`;
+  const [firstTime, setFirstTime] = useState(true);
   return (
     <div className="bg-yellow-50">
       <div className="min-h-screen">

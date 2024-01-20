@@ -1,19 +1,53 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { auth } from '../../firbaseConfig';
+import { auth, db } from '../../firbaseConfig';
 import { useNavigate } from 'react-router-dom';
+import {
+  collection,
+  doc,
+  getDoc,
+  onSnapshot,
+  query,
+  where,
+} from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { createUser } from './UserSlice';
+import { deposite, requestLoan } from '../Transaction/TransactionSlice';
 
 function LoginForm() {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  function handleSubmit(e) {
+  const dispatch = useDispatch();
+  async function handleSubmit(e) {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password).then((userCreadential) =>
-      navigate('/app'),
-    );
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    const itemsRef = collection(db, 'appUsers');
+    if (res.user.uid) {
+      const queryItems = query(itemsRef, where('UserUID', '==', res.user.uid));
+      const unsubscribe = onSnapshot(queryItems, (snapShot) => {
+        console.log(snapShot.docs[0].data());
+        dispatch(
+          createUser(
+            snapShot.docs[0].data().FullName,
+            res.user.uid,
+            snapShot.docs[0].data().AccountNumber,
+          ),
+        );
+        dispatch(deposite(snapShot.docs[0].data().Balance));
+        dispatch(
+          requestLoan(
+            snapShot.docs[0].data().Loan,
+            snapShot.docs[0].data().LoanPurpose,
+            snapShot.docs[0].data().Balance,
+          ),
+        );
+      });
+    }
+    navigate('/app');
   }
+
   return (
     <form
       className="flex flex-col gap-4 border-x-4 border-b-4 border-yellow-700 p-4 xs:w-[80%] sm:w-1/2 lg:w-[40%] xl:w-[30%]"
@@ -76,5 +110,4 @@ function LoginForm() {
     </form>
   );
 }
-
 export default LoginForm;

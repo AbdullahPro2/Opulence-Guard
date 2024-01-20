@@ -9,7 +9,6 @@ import Contact from './ui/Contact';
 
 const router = createBrowserRouter([
   {
-    path: '/',
     element: <AppLayout />,
     children: [
       {

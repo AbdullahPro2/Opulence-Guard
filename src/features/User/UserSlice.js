@@ -25,8 +25,13 @@ const userSlice = createSlice({
         state.accountNumber = action.payload.accountNumber;
       },
     },
+    userLogout(state, action) {
+      state.fullName = '';
+      state.accountNumber = '';
+      state.uid = '';
+    },
   },
 });
 
-export const { createUser } = userSlice.actions;
+export const { createUser, userLogout } = userSlice.actions;
 export default userSlice.reducer;

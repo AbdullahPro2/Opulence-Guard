@@ -3,8 +3,11 @@ import UserImg from '../assets/user.png';
 import MenuIcon from '../assets/MenuIcon.png';
 import CrossIcon from '../assets/CrossIcon.png';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firbaseConfig';
+import { userLogout } from '../features/User/UserSlice';
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -22,7 +25,15 @@ function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen, prevScrollPos]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { fullName } = useSelector((state) => state.user);
+  async function handleLogout() {
+    signOut(auth).then(() => {
+      dispatch(userLogout(null));
+      navigate('/');
+    });
+  }
   return (
     <header className="relative z-40 flex items-center justify-between bg-yellow-400 px-2 py-1 text-sm md:text-base xl:text-lg">
       <div className=" mt-3 text-center">
@@ -34,8 +45,17 @@ function Header() {
             className={`mx-auto mb-2 w-8 md:w-12 xl:w-16`}
           />
         </Link>
-
-        <h3>{fullName}</h3>
+        <div className="cursor-pointer">
+          <h3>{fullName}</h3>
+          {fullName && (
+            <button
+              className='className="w-full " rounded-md bg-black px-4 py-2 font-black text-yellow-400 hover:bg-yellow-900'
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )}
+        </div>
       </div>
       <img src={Logo} alt="Main Logo" className="w-28 md:w-32 lg:w-40 " />
       <div className="w-16">

@@ -63,7 +63,7 @@ function SignUp({ setFirstTime }) {
   }
   return (
     <form
-      className="flex flex-col gap-4 border-x-4 border-b-4 border-yellow-700 p-4 xs:w-[80%] sm:w-1/2 lg:w-[40%] xl:w-[30%]"
+      className="flex w-[80%] flex-col gap-4 border-x-4 border-b-4 border-yellow-700 p-4 xs:w-[80%] sm:w-1/2 lg:w-[40%] xl:w-[30%]"
       onSubmit={(e) => handleSubmit(e)}
     >
       <div className="flex w-full flex-col ">

@@ -27,14 +27,14 @@ function CarouselItem({
         </div>
 
         <div className="absolute mt-5 flex gap-2 text-[10px] xs:text-sm sm:text-base  lg:text-lg">
-          <Link to="/registration">
+          <Link to="/Opulence-Guard/registration">
             <button
               className={`${bgBtn} ${btnText} rounded-md border-2 border-transparent p-1 md:p-2 `}
             >
               {btn_1}
             </button>
           </Link>
-          <Link to="/about">
+          <Link to="/Opulence-Guard/about">
             <button className="rounded-md  border-2  border-black bg-transparent p-1 text-white md:p-2 ">
               {btn_2}
             </button>

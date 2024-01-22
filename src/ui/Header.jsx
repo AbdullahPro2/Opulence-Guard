@@ -33,7 +33,7 @@ function Header() {
     signOut(auth).then(() => {
       dispatch(userLogout(null));
       dispatch(resetUser(null));
-      navigate('/');
+      navigate('/Opulence-Guard/');
     });
   }
   return (

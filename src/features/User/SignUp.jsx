@@ -53,7 +53,7 @@ function SignUp({ setFirstTime }) {
             setPassword('');
             setUserName('');
             setFirstTime(false);
-            navigate('/Opulence-Guard/app');
+            navigate('/Opulence-Guard/registration');
           }
         }
       } catch (e) {

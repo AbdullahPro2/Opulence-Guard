@@ -45,7 +45,7 @@ function LoginForm() {
         );
       });
     }
-    navigate('/app');
+    navigate('/Opulence-Guard/app');
   }
 
   return (

@@ -14,19 +14,21 @@ function Footer() {
     "
     >
       <div className="mb-4 flex flex-col   md:mb-0 md:h-full md:p-5 ">
-        <img src={Logo} alt="Logo" className="w-40 lg:w-64" />
+        <Link to="/Opulence-Guard/">
+          <img src={Logo} alt="Logo" className="w-40 lg:w-64" />
+        </Link>
       </div>
       <div className=" mb-4 flex w-full list-none items-center justify-center gap-2 text-xs md:mb-0    md:h-full md:w-full md:flex-col md:gap-8 md:p-5 md:text-base lg:text-lg ">
-        <Link to="/about">
+        <Link to="/Opulence-Guard/about">
           <li className="cursor-pointer">About</li>
         </Link>
-        <Link to="/contact">
+        <Link to="/Opulence-Guard/contact">
           <li className="cursor-pointer">Contact</li>
         </Link>
-        <Link to="/products">
+        <Link to="/Opulence-Guard/products">
           <li className="cursor-pointer">Products</li>
         </Link>
-        <Link to="/app">
+        <Link to="/Opulence-Guard/app">
           <li className="cursor-pointer">Transactions</li>
         </Link>
       </div>
@@ -38,7 +40,7 @@ function Footer() {
       </ul>
 
       <div className="col-span-3 mb-4 flex items-center justify-center  gap-8    md:mb-0 md:gap-20 md:p-5 ">
-        <Link to="/">
+        <Link to="/Opulence-Guard/">
           <img
             src={Home}
             alt="Social Links images"

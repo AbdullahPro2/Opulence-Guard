@@ -14,27 +14,27 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: '/',
+        path: '/Opulence-Guard/',
         element: <Home />,
       },
       {
-        path: '/app',
+        path: '/Opulence-Guard/app',
         element: <Transaction />,
       },
       {
-        path: '/registration',
+        path: '/Opulence-Guard/registration',
         element: <Registration />,
       },
       {
-        path: '/about',
+        path: '/Opulence-Guard/about',
         element: <About />,
       },
       {
-        path: '/products',
+        path: '/Opulence-Guard/products',
         element: <Products />,
       },
       {
-        path: '/contact',
+        path: '/Opulence-Guard/contact',
         element: <Contact />,
       },
     ],

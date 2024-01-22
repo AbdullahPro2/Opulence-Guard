@@ -44,6 +44,13 @@ const accountSlice = createSlice({
       state.transferAmont = action.payload;
       state.balance -= action.payload;
     },
+    resetUser(state, action) {
+      state.balance = 0;
+      state.loan = 0;
+      state.loanPurpose = '';
+      state.transferAmont = 0;
+      state.isLoading = '';
+    },
   },
 });
 
@@ -53,5 +60,6 @@ export const {
   deposite,
   payLoan,
   transferToAnotherAccount,
+  resetUser,
 } = accountSlice.actions;
 export default accountSlice.reducer;

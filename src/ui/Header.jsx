@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firbaseConfig';
 import { userLogout } from '../features/User/UserSlice';
+import { resetUser } from '../features/Transaction/TransactionSlice';
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -31,13 +32,14 @@ function Header() {
   async function handleLogout() {
     signOut(auth).then(() => {
       dispatch(userLogout(null));
+      dispatch(resetUser(null));
       navigate('/');
     });
   }
   return (
     <header className="relative z-40 flex items-center justify-between bg-yellow-400 px-2 py-1 text-sm md:text-base xl:text-lg">
       <div className=" mt-3 text-center">
-        <Link to="/registration">
+        <Link to="/Opulence-Guard/registration">
           {' '}
           <img
             src={UserImg}
@@ -57,7 +59,13 @@ function Header() {
           )}
         </div>
       </div>
-      <img src={Logo} alt="Main Logo" className="w-28 md:w-32 lg:w-40 " />
+      <Link to="/Opulence-Guard/">
+        <img
+          src={Logo}
+          alt="Main Logo"
+          className="w-28 cursor-pointer md:w-32 lg:w-40"
+        />
+      </Link>
       <div className="w-16">
         {!isOpen ? (
           <img
@@ -79,7 +87,7 @@ function Header() {
             isOpen ? 'w-[50%] ' : ''
           } `}
         >
-          <Link to="/">
+          <Link to="/Opulence-Guard/">
             <li
               className={`w-80 justify-center  xl:inline   ${
                 isOpen ? 'flex' : 'hidden'
@@ -90,7 +98,7 @@ function Header() {
             </li>{' '}
           </Link>
 
-          <Link to="/app">
+          <Link to="/Opulence-Guard/app">
             <li
               className={`w-80 justify-center   xl:inline  ${
                 isOpen ? 'flex' : 'hidden'
@@ -100,7 +108,7 @@ function Header() {
               Accounts
             </li>
           </Link>
-          <Link to="/products">
+          <Link to="/Opulence-Guard/products">
             <li
               className={`w-80 justify-center   xl:inline  ${
                 isOpen ? 'flex' : 'hidden'
@@ -110,7 +118,7 @@ function Header() {
               Products
             </li>
           </Link>
-          <Link to="/about">
+          <Link to="/Opulence-Guard/about">
             <li
               className={`w-80 justify-center  xl:inline   ${
                 isOpen ? 'flex' : 'hidden'
@@ -121,7 +129,7 @@ function Header() {
             </li>
           </Link>
 
-          <Link to="/contact">
+          <Link to="/Opulence-Guard/contact">
             <li
               className={` w-80 justify-center  xl:inline  ${
                 isOpen ? 'flex' : 'hidden'

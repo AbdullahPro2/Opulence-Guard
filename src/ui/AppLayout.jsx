@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
+import GeneralError from './GeneralError';
 
 function AppLayout() {
   const location = useLocation();

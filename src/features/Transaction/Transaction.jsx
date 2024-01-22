@@ -18,6 +18,7 @@ import {
   where,
 } from 'firebase/firestore';
 import { db } from '../../firbaseConfig';
+import GeneralError from '../../ui/GeneralError';
 
 const TransactionForm = () => {
   const [btnOpen, setBtnOpen] = useState('');
@@ -27,6 +28,7 @@ const TransactionForm = () => {
   const [payLoanAmount, setPayLoan] = useState('');
   const [withdrawAmount, setWithdrawAmount] = useState('');
   const [transferAmount, setTransferAmount] = useState('');
+  const [general, setGeneral] = useState(false);
   const dispatch = useDispatch();
   const { balance, loan } = useSelector((state) => state.account);
   const { fullName, uid, accountNumber } = useSelector((state) => state.user);
@@ -89,6 +91,8 @@ const TransactionForm = () => {
       } catch (error) {
         console.log(error);
       }
+    } else {
+      setGeneral(true);
     }
   }
 
@@ -107,6 +111,8 @@ const TransactionForm = () => {
         } catch (e) {
           console.log(e);
         }
+      } else {
+        setGeneral(true);
       }
     }
   }
@@ -129,6 +135,8 @@ const TransactionForm = () => {
       } catch (e) {
         console.log(e);
       }
+    } else {
+      setGeneral(true);
     }
   }
   async function handlePayLoan() {
@@ -147,11 +155,17 @@ const TransactionForm = () => {
       } catch (e) {
         console.log(e);
       }
+    } else {
+      setGeneral(true);
     }
   }
 
   function handleTransfer() {
-    dispatch(transferToAnotherAccount(transferAmount));
+    if (uid) {
+      dispatch(transferToAnotherAccount(transferAmount));
+    } else {
+      setGeneral(true);
+    }
   }
 
   return (
@@ -374,6 +388,7 @@ const TransactionForm = () => {
           </div>
         )}
       </div>
+      {general && <GeneralError onSetGeneral={setGeneral} />}
     </div>
   );
 };

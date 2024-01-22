@@ -6,10 +6,12 @@ import About from './ui/About';
 import Transaction from './features/Transaction/Transaction';
 import Products from './ui/Products';
 import Contact from './ui/Contact';
+import Error from './ui/Error';
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',

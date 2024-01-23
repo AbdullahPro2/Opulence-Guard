@@ -6,7 +6,10 @@ const GeneralError = ({ onSetGeneral, text_1, text_2, text_3 }) => {
     <div className="fixed left-0 top-0 z-50 w-full bg-red-500 p-4 text-center text-white">
       <p className="mb-2">
         {text_1}
-        <Link to="/registration" className="ml-1 text-lg underline">
+        <Link
+          to="/Opulence-Guard/registration"
+          className="ml-1 text-lg underline"
+        >
           {text_2}
         </Link>{' '}
         {text_3}

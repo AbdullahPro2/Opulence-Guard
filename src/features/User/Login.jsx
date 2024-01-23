@@ -2,50 +2,52 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { auth, db } from '../../firbaseConfig';
 import { useNavigate } from 'react-router-dom';
-import {
-  collection,
-  doc,
-  getDoc,
-  onSnapshot,
-  query,
-  where,
-} from 'firebase/firestore';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { createUser } from './UserSlice';
 import { deposite, requestLoan } from '../Transaction/TransactionSlice';
+import GeneralError from '../../ui/GeneralError';
 
 function LoginForm() {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [generalError, setGeneralError] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await signInWithEmailAndPassword(auth, email, password);
-    const itemsRef = collection(db, 'appUsers');
-    if (res.user.uid) {
-      const queryItems = query(itemsRef, where('UserUID', '==', res.user.uid));
-      const unsubscribe = onSnapshot(queryItems, (snapShot) => {
-        console.log(snapShot.docs[0].data());
-        dispatch(
-          createUser(
-            snapShot.docs[0].data().FullName,
-            res.user.uid,
-            snapShot.docs[0].data().AccountNumber,
-          ),
+    try {
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      const itemsRef = collection(db, 'appUsers');
+      if (res.user.uid) {
+        const queryItems = query(
+          itemsRef,
+          where('UserUID', '==', res.user.uid),
         );
-        dispatch(deposite(snapShot.docs[0].data().Balance));
-        dispatch(
-          requestLoan(
-            snapShot.docs[0].data().Loan,
-            snapShot.docs[0].data().LoanPurpose,
-            snapShot.docs[0].data().Balance,
-          ),
-        );
-      });
+        const unsubscribe = onSnapshot(queryItems, (snapShot) => {
+          dispatch(
+            createUser(
+              snapShot.docs[0].data().FullName,
+              res.user.uid,
+              snapShot.docs[0].data().AccountNumber,
+            ),
+          );
+          dispatch(deposite(snapShot.docs[0].data().Balance));
+          dispatch(
+            requestLoan(
+              snapShot.docs[0].data().Loan,
+              snapShot.docs[0].data().LoanPurpose,
+              snapShot.docs[0].data().Balance,
+            ),
+          );
+        });
+        navigate('/Opulence-Guard/app');
+      }
+    } catch (err) {
+      setGeneralError(true);
+      console.log('No User Found');
     }
-    navigate('/Opulence-Guard/app');
   }
 
   return (
@@ -107,6 +109,15 @@ function LoginForm() {
       >
         Login
       </button>
+      {generalError && (
+        <GeneralError
+          onSetGeneral={setGeneralError}
+          text_1="You Don't Have Account. Please"
+          text_2="login"
+          text_3="first."
+        />
+      )}
+      ;
     </form>
   );
 }

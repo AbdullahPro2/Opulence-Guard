@@ -388,7 +388,14 @@ const TransactionForm = () => {
           </div>
         )}
       </div>
-      {general && <GeneralError onSetGeneral={setGeneral} />}
+      {general && (
+        <GeneralError
+          onSetGeneral={setGeneral}
+          text_1="To perform this action, please"
+          text_2="login or sign up"
+          text_3="first."
+        />
+      )}
     </div>
   );
 };

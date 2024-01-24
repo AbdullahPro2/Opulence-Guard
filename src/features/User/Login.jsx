@@ -8,7 +8,7 @@ import { createUser } from './UserSlice';
 import { deposite, requestLoan } from '../Transaction/TransactionSlice';
 import GeneralError from '../../ui/GeneralError';
 
-function LoginForm() {
+function LoginForm({ setFirstTime }) {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -112,8 +112,9 @@ function LoginForm() {
       {generalError && (
         <GeneralError
           onSetGeneral={setGeneralError}
+          onSetFirstTime={setFirstTime}
           text_1="You Don't Have Account. Please"
-          text_2="login"
+          text_2="Signup"
           text_3="first."
         />
       )}

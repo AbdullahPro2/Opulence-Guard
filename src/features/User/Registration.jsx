@@ -25,7 +25,7 @@ function Registration() {
         </button>
       </div>
       {firstTime && <SignUp setFirstTime={setFirstTime} />}
-      {!firstTime && <Login />}
+      {!firstTime && <Login setFirstTime={setFirstTime} />}
     </div>
   );
 }

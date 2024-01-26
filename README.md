@@ -1,4 +1,4 @@
-# Welcome to Opulence Guard ![Opulence-Guard Logo](/src//assets/Logo.svg)
+# Welcome to Opulence Guard
 
 Site live on: [Opulence Guard](https://abdullahpro2.github.io/Opulence-Guard/).
 

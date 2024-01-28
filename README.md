@@ -51,10 +51,6 @@ To run the project locally:
    ```
 3. **Dependencies**
 
-- **@reduxjs/toolkit:** ^2.0.1
-
-  - Description: State management library for React applications.
-
 - **aos:** ^2.3.4
 
   - Description: Animate On Scroll library for creating scroll-based animations.
@@ -63,13 +59,9 @@ To run the project locally:
 
   - Description: Firebase SDK for integrating Firebase services into your application.
 
-- **gh-pages:** ^6.1.1
+- **@reduxjs/toolkit:** ^2.0.1
 
-  - Description: GitHub Pages deployment tool for static websites.
-
-- **react-redux:** ^9.1.0
-
-  - Description: Official React bindings for Redux, a predictable state container.
+  - Description: State management library for React applications.
 
 - **react-router-dom:** ^6.21.1
   - Description: Declarative routing for React applications.

@@ -7,6 +7,7 @@ function About() {
         <h1 className="mb-5 text-center text-2xl font-bold lg:text-3xl">
           About us
         </h1>
+        <div className="mx-auto mb-10 mt-3 w-12 rounded-md border-[3px] border-yellow-500"></div>
         <p className="md:text-lg">
           Welcome to Opulence Guard, where tradition meets innovation in the
           world of banking. At Opulence Guard, we are dedicated to bringing a

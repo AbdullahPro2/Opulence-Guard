@@ -4,7 +4,9 @@ function Contact() {
   return (
     <>
       <section className="contact mb-40 ">
-        <h1 className="text-uppercase  mt-10 text-center text-2xl">contact</h1>
+        <h1 className="mb-5 mt-10 text-center text-2xl font-bold lg:text-3xl">
+          contact
+        </h1>
         <div className="mx-auto mb-10 mt-3 w-12 rounded-md border-[3px] border-yellow-500"></div>
         <div className="grid grid-cols-1 gap-8 px-9 md:grid-cols-2">
           <div className="about-us">

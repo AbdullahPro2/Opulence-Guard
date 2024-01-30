@@ -25,7 +25,7 @@ The React Banking Website provides users with a platform to perform various bank
 3. **Firebase Integration:**
 
    - Utilizes Firebase for both authentication and database functionalities.
-   - User data is stored in Firebase Firestore, ensuring accessibility with valid credentials.
+   - User data is stored in Firebase Firestore, ensuring accessibility with valid credentials. So this mean whenever you signup and perform some actions, then you will always see your same data as of last login session.
 
 4. **React-Router-Dom v6+:**
 

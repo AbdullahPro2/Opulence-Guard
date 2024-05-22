@@ -118,7 +118,6 @@ function LoginForm({ setFirstTime }) {
           text_3="first."
         />
       )}
-      ;
     </form>
   );
 }
